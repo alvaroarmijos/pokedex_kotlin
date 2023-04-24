@@ -44,9 +44,12 @@ class HomeActivity : AppCompatActivity() {
     private fun addListeners() {
         binding.btnNext.setOnClickListener {
             homeViewModel.next()
+            binding.rvPokemons.scrollToPosition(0)
+
         }
         binding.btnPrevious.setOnClickListener {
             homeViewModel.previous()
+            binding.rvPokemons.scrollToPosition(0)
         }
     }
 

@@ -6,13 +6,13 @@ data class PokemonDetail(
     val height: Int,
     val weight: Int,
     val imageUrl: String,
-    val abilities: List<Abilitie>,
+    val abilities: List<Ability>,
     val types: List<Type>
 
     )
 
 
-data class Abilitie(
+data class Ability(
     val name: String,
 )
 

@@ -7,4 +7,5 @@
     <!--    Pokemon Detail-->
     <string name="pokemon_detail_height">Height</string>
     <string name="pokemon_detail_weight">Weight</string>
+    <string name="pokemon_detail_abilities">Abilities</string>
 </resources>

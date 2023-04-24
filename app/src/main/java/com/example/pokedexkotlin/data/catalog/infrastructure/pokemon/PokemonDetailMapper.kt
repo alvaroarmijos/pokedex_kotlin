@@ -3,7 +3,7 @@ package com.example.pokedexkotlin.data.catalog.infrastructure.pokemon
 import AbilitieDto
 import PokemonDetailDto
 import TypesDto
-import com.example.pokedexkotlin.data.catalog.domain.pokemon.Abilitie
+import com.example.pokedexkotlin.data.catalog.domain.pokemon.Ability
 import com.example.pokedexkotlin.data.catalog.domain.pokemon.PokemonDetail
 import com.example.pokedexkotlin.data.catalog.domain.pokemon.Type
 
@@ -29,9 +29,9 @@ class PokemonDetailMapper {
 
     }
 
-    private fun fromApiAbilitieDto(apiAbilitieDto: AbilitieDto): Abilitie {
+    private fun fromApiAbilitieDto(apiAbilitieDto: AbilitieDto): Ability {
         val name = apiAbilitieDto.ability.name
-        return Abilitie(name)
+        return Ability(name)
     }
 
     private fun fromApiTypeDto(apiTypeDto: TypesDto): Type {
@@ -40,7 +40,7 @@ class PokemonDetailMapper {
     }
 
 
-    private fun fromApiAbilitieDtoList(apiDtoList: List<AbilitieDto>): List<Abilitie> {
+    private fun fromApiAbilitieDtoList(apiDtoList: List<AbilitieDto>): List<Ability> {
         return apiDtoList.map { fromApiAbilitieDto(it) }
     }
 

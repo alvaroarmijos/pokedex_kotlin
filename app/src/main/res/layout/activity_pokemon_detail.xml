@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_200"
+    android:background="@color/purple_500"
     tools:context=".feature.pokemon_details.PokemonDetailActivity">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="450dp"
         android:layout_marginBottom="-50dp"
         android:layout_weight="1"
         app:cardCornerRadius="40dp"
@@ -79,6 +80,29 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/pokemon_detail_abilities"
+                    android:textColor="@color/purple_200"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAbilities"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
@@ -88,12 +112,12 @@
         android:id="@+id/ivPokemonDetail"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_margin="8dp"
         android:adjustViewBounds="false"
         android:elevation="10dp"
+        android:layout_marginBottom="-60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPokemonDetailId" />
+        app:layout_constraintBottom_toTopOf="@id/cardView" />
 
     <ImageView
         android:id="@+id/btnBack"
@@ -110,7 +134,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="30sp"
@@ -131,5 +155,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvPokemonDetailName"
         tools:text="#1" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTypes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPokemonDetailId"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
