@@ -17,6 +17,9 @@
         android:theme="@style/Theme.PokedexKotlin"
         tools:targetApi="31">
         <activity
+            android:name=".feature.pokemon_details.PokemonDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".feature.home.HomeActivity"
             android:exported="true">
             <intent-filter>

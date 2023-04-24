@@ -1,5 +1,6 @@
 package com.example.pokedexkotlin.feature.home
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -7,6 +8,8 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.pokedexkotlin.databinding.ActivityHomeBinding
 import com.example.pokedexkotlin.feature.home.widgets.PokemonAdapter
+import com.example.pokedexkotlin.feature.pokemon_details.PokemonDetailActivity
+import com.example.pokedexkotlin.feature.pokemon_details.PokemonDetailActivity.Companion.POKEMON_ID
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -55,7 +58,9 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun navigateToPokemonDetail(id: Int) {
-        println(id)
+        val intent = Intent(this, PokemonDetailActivity::class.java)
+        intent.putExtra(POKEMON_ID, id)
+        startActivity(intent)
     }
 
 
