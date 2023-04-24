@@ -3,4 +3,8 @@
     <string name="title_app">Pokedex</string>
     <string name="btn_previous">Previous</string>
     <string name="next">Next</string>
+
+    <!--    Pokemon Detail-->
+    <string name="pokemon_detail_height">Height</string>
+    <string name="pokemon_detail_weight">Weight</string>
 </resources>

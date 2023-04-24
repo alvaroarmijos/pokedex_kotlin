@@ -1,8 +1,8 @@
 package com.example.pokedexkotlin.di
 
-import com.example.pokedexkotlin.data.catalog.application.GetAllPokemons
 import com.example.pokedexkotlin.data.catalog.common.network.PokemonClient
 import com.example.pokedexkotlin.data.catalog.domain.pokemon.PokemonRepository
+import com.example.pokedexkotlin.data.catalog.infrastructure.pokemon.PokemonDetailMapper
 import com.example.pokedexkotlin.data.catalog.infrastructure.pokemon.PokemonMapper
 import com.example.pokedexkotlin.data.catalog.infrastructure.pokemon.PokemonRepositoryApi
 import dagger.Module
@@ -36,7 +36,8 @@ object CatalogModule {
     @Provides
     internal fun providePokemonRepository(apiClient: PokemonClient): PokemonRepository {
         val mapper = PokemonMapper()
-        return PokemonRepositoryApi(apiClient, mapper)
+        val mapperDetail = PokemonDetailMapper()
+        return PokemonRepositoryApi(apiClient, mapper, mapperDetail)
     }
 
 //    @Singleton

@@ -1,8 +1,7 @@
 package com.example.pokedexkotlin.data.catalog.infrastructure.pokemon
 
-import android.util.Log
+import PokemonDto
 import com.example.pokedexkotlin.data.catalog.domain.pokemon.Pokemon
-import com.example.pokedexkotlin.feature.home.vo.PokemonDto
 
 class PokemonMapper {
     fun fromApiDto(apiDto: PokemonDto): Pokemon {

@@ -38,7 +38,6 @@ class HomeViewModel @Inject constructor(
     fun getPokemons() {
         viewModelScope.launch {
             isLoading.postValue(true)
-            Log.i("alvaro", "getPokemons")
             val result = offset.value?.let { getAllPokemons(it) }
             if (!result.isNullOrEmpty()) {
                 pokemons.postValue(result!!)

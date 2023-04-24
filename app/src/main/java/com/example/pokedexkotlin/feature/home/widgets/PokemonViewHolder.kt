@@ -19,8 +19,6 @@ class PokemonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         binding.tvPokemonName.text = pokemonItem.name
 
-        Picasso.get().load(pokemonItem.imageUrl).into(binding.ivPokemon)
-
         binding.ivPokemon.loadImage(pokemonItem.imageUrl)
 
         binding.root.setOnClickListener { onItemSelected(pokemonItem.id) }
