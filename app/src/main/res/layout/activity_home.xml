@@ -7,12 +7,66 @@
     tools:context=".feature.home.HomeActivity">
 
     <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/title_app"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ivPokeball"
+        app:layout_constraintBottom_toBottomOf="@id/ivPokeball"
+        android:textAlignment="textStart"
+        />
+
+    <ImageView
+        android:id="@+id/ivPokeball"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/pokeball"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPrevious"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivPokeball"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="4dp"
+        android:text="@string/btn_previous"
+        android:drawableStart="@drawable/ic_navigate_before"
+        android:backgroundTint="@color/purple_200"
+        />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ivPokeball"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Pokemon List"/>
+        android:layout_marginEnd="4dp"
+        android:text="@string/next"
+        android:drawableEnd="@drawable/ic_navigate_next"
+        android:backgroundTint="@color/purple_200"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPokemons"
+        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnPrevious"/>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
