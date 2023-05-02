@@ -7,5 +7,5 @@ import javax.inject.Inject
 
 class GetAllPokemons @Inject constructor(private val pokemonRepository: PokemonRepository) {
 
-    suspend operator  fun invoke(offset:Int): List<Pokemon> = pokemonRepository.findAll(offset)
+    operator  fun invoke(offset:Int): Flow<List<Pokemon>> = pokemonRepository.findAll(offset)
 }

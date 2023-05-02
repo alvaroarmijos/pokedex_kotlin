@@ -6,6 +6,9 @@ import com.example.pokedexkotlin.data.catalog.domain.pokemon.Pokemon
 import com.example.pokedexkotlin.data.catalog.domain.pokemon.PokemonDetail
 import com.example.pokedexkotlin.data.catalog.domain.pokemon.PokemonRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -23,14 +26,16 @@ class PokemonRepositoryApi @Inject constructor(
         }
     }
 
-    override suspend fun findAll(offset: Int): List<Pokemon> {
-        return refresh(offset)
+    override fun findAll(offset: Int): Flow<List<Pokemon>> {
+        return flow {
+            emit(refresh(offset))
+        }
     }
 
-    override suspend fun findById(id: Int): PokemonDetail? {
-        return withContext(Dispatchers.IO) {
+    override fun findById(id: Int): Flow<PokemonDetail?> {
+        return flow {
             val dto = apiClient.getPokemon(id)
-            dto?.let { mapperDetail.fromApiDto(it) }
+            emit(dto?.let { mapperDetail.fromApiDto(it) })
         }
     }
 }

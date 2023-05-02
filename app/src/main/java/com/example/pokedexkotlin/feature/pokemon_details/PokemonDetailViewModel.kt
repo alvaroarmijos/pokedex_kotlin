@@ -3,6 +3,8 @@ package com.example.pokedexkotlin.feature.pokemon_details
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import com.example.pokedexkotlin.data.catalog.application.GetPokemonDetail
 import com.example.pokedexkotlin.data.catalog.domain.pokemon.PokemonDetail
@@ -15,17 +17,10 @@ class PokemonDetailViewModel @Inject constructor(
     private val getPokemonDetail: GetPokemonDetail,
 ) : ViewModel() {
 
-    val pokemon = MutableLiveData<PokemonDetail>()
-    val isLoading = MutableLiveData<Boolean>()
+    private val pokemonIdController = MutableLiveData<Int>()
+    val pokemon = pokemonIdController.switchMap { getPokemonDetail(it).asLiveData() }
 
-    fun getPokemon(id:Int) {
-        viewModelScope.launch {
-            isLoading.postValue(true)
-            val result = getPokemonDetail(id)
-            if (result != null) {
-                pokemon.postValue(result!!)
-                isLoading.postValue(false)
-            }
-        }
+    fun fetchPokemon(idPokemon: Int){
+        pokemonIdController.value = idPokemon
     }
 }

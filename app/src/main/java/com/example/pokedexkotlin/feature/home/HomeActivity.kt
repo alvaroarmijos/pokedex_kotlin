@@ -27,16 +27,11 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         initUI()
         addListeners()
-        homeViewModel.getPokemons()
 
-        homeViewModel.pokemons.observe(this) {
-            if (it.isNotEmpty()) {
+        homeViewModel.allPokemons.observe(this){
+            if (it.isNotEmpty()){
                 adapter.updateList(it)
             }
-        }
-
-        homeViewModel.isLoading.observe(this) {
-            binding.pbHome.isVisible = it
         }
 
     }

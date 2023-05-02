@@ -23,7 +23,7 @@ class PokemonDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPokemonDetailBinding
     private lateinit var adapterType: TypeAdapter
     private lateinit var adapterAbility: AbilityAdapter
-    private val pokemonDetailViewModel : PokemonDetailViewModel by viewModels()
+    private val pokemonDetailViewModel: PokemonDetailViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,16 +36,17 @@ class PokemonDetailActivity : AppCompatActivity() {
 
         val id: Int = intent.getIntExtra(POKEMON_ID, 0)
 
-        pokemonDetailViewModel.getPokemon(id)
+        pokemonDetailViewModel.fetchPokemon(id)
 
-        pokemonDetailViewModel.pokemon.observe(this){
-            binding.tvPokemonDetailId.text = "#${it.id}"
-            binding.tvPokemonDetailName.text = it.name
-            binding.tvPokemonHeight.text = "${it.height} mm"
-            binding.tvPokemonWeight.text = "${it.weight} gr"
-            binding.ivPokemonDetail.loadImage(it.imageUrl)
-            adapterType.updateList(it.types)
-            adapterAbility.updateList(it.abilities)
+        pokemonDetailViewModel.pokemon.observe(this) {
+
+            binding.tvPokemonDetailId.text = "#${it?.id}"
+            binding.tvPokemonDetailName.text = it?.name
+            binding.tvPokemonHeight.text = "${it?.height} mm"
+            binding.tvPokemonWeight.text = "${it?.weight} gr"
+            it?.imageUrl?.let { it1 -> binding.ivPokemonDetail.loadImage(it1) }
+            it?.let { it1 -> adapterType.updateList(it1.types) }
+            it?.let { it1 -> adapterAbility.updateList(it1.abilities) }
 
         }
     }
@@ -53,7 +54,8 @@ class PokemonDetailActivity : AppCompatActivity() {
     private fun initUi() {
         adapterType = TypeAdapter()
         binding.rvTypes.setHasFixedSize(true)
-        binding.rvTypes.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvTypes.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.rvTypes.adapter = adapterType
 
         adapterAbility = AbilityAdapter()
