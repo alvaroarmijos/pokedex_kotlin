@@ -14,3 +14,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "PokedexKotlin"
 include ':app'
+include ':feature:home'
+include ':feature:pokemon_details'
+include ':data:catalog'
+include ':core:common'
+include ':core:ui'
